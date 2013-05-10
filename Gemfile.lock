@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.2)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
+    haml (4.0.2)
+      tilt
+    multi_json (1.7.3)
+    tilt (1.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  coffee-script
+  haml
