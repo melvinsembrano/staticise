@@ -12,13 +12,21 @@ program :version, '0.0.1'
 program :description, 'Static site generator using Haml and Coffeescript'
 
 command :build do |c|
-  c.syntax = 'staticise build [options]'
-  c.summary = ''
-  c.description = ''
+  c.syntax = 'staticise build'
+  c.summary = 'Build all pages, js and css'
+  c.description = 'Build all pages, js and css'
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
   c.action do |args, options|
     Staticise::Renderer.all
+  end
+end
+
+command :init do |c|
+  c.syntax = 'staticise init'
+  c.summary = 'Initialize app, create initial folder structure'
+  c.action do |args, options|
+    Staticise::Renderer.init
   end
 end
 
