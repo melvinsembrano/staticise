@@ -26,12 +26,23 @@ module Staticise
     end
 
     def self.all
+      self.pages
+      self.scripts
+      puts "DONE..."
+    end
+
+    def self.pages
       puts "Compiling pages.."
       files = Dir.glob(File.join(APP_ROOT, 'app/pages/**/*.haml'))
       files.each do |f|
         self.new(f).export
       end
       return
+    end
+
+    def self.scripts
+      puts 'compiling coffees...'
+      `coffee -o #{ File.join(APP_ROOT, 'public', 'js') } -c #{ File.join(APP_ROOT, 'app', 'coffee')}`
     end
 
     private
