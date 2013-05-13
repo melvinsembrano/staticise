@@ -11,6 +11,8 @@ program :name, 'staticise'
 program :version, '0.0.1'
 program :description, 'Static site generator using Haml and Coffeescript'
 
+default_command :build
+
 command :build do |c|
   c.syntax = 'staticise build'
   c.summary = 'Build all pages, js and css'

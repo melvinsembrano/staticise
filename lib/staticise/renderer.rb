@@ -42,12 +42,12 @@ module Staticise
 
     def self.scripts
       puts 'compiling coffees...'
-      `coffee -o #{ File.join(APP_ROOT, 'public', 'js') } -c #{ File.join(APP_ROOT, 'app', 'coffee')}`
+      `coffee -o #{ File.join(APP_ROOT, 'public', 'js') } -c #{ File.join(APP_ROOT, 'app', 'js')}`
     end
 
     def self.init
       puts "Creating default folder structure.."
-      %w{app/pages app/layouts app/coffee app/less app/sass}.each do |f|
+      %w{app/pages app/layouts app/js app/css}.each do |f|
         FileUtils.mkdir_p(File.join(APP_ROOT, f)) unless File.exist?(File.join(APP_ROOT, f))
       end
     end
