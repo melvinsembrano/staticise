@@ -9,10 +9,19 @@ module Staticise
       extract(file)
     end
 
-    def render
-      Haml::Engine.new(File.read(@layout)).render do
-        Haml::Engine.new(File.read(@file)).render
+    def render_page
+      Haml::Engine.new(File.read(@layout)).render(self) do
+        Haml::Engine.new(File.read(@file)).render(self)
       end
+    end
+
+    def partial(file, locals = {})
+      if file.split("/").length > 1
+        path = File.join(APP_ROOT, 'app', 'pages', "_#{ file.to_s }.haml")
+      else
+        path = File.join(File.dirname(@file), "_#{ file.to_s }.haml")
+      end
+      Haml::Engine.new(File.read(path)).render(self, locals)
     end
 
     def export
@@ -22,7 +31,7 @@ module Staticise
       puts "  -- compiling #{ @file } => #{ out }"
 
       FileUtils.mkdir_p(File.dirname(out)) unless File.exist?(File.dirname(out))
-      File.open(out, 'w') {|f| f.puts render}
+      File.open(out, 'w') {|f| f.puts render_page}
     end
 
     def self.all
@@ -35,7 +44,7 @@ module Staticise
       puts "Compiling pages.."
       files = Dir.glob(File.join(APP_ROOT, 'app/pages/**/*.haml'))
       files.each do |f|
-        self.new(f).export
+        self.new(f).export unless File.basename(f).start_with?("_")
       end
       return
     end
