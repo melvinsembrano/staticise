@@ -34,9 +34,22 @@ module Staticise
       File.open(out, 'w') {|f| f.puts render_page}
     end
 
+    def self.compile_css(file)
+      b = 'app/css/'
+      out = File.join(APP_ROOT, 'public', 'css', file[(file.index(b) + b.length)..-1])
+      out = File.join(File.dirname(out), "#{ File.basename(out, File.extname(out)) }.css")
+      puts "  -- compiling #{ file } => #{ out }"
+
+      FileUtils.mkdir_p(File.dirname(out)) unless File.exist?(File.dirname(out))
+      `lessc #{ file } #{ out }`
+      true
+    end
+
+
     def self.all
       self.pages
       self.scripts
+      self.styles
       puts "DONE..."
     end
 
@@ -53,6 +66,16 @@ module Staticise
       puts 'compiling coffees...'
       `coffee -o #{ File.join(APP_ROOT, 'public', 'js') } -c #{ File.join(APP_ROOT, 'app', 'js')}`
     end
+
+    def self.styles
+      puts "Compiling pages.."
+      files = Dir.glob(File.join(APP_ROOT, 'app/css/**/*.less'))
+      files.each do |f|
+        self.compile_css(f)
+      end
+      return
+    end
+
 
     def self.init
       puts "Creating default folder structure.."
