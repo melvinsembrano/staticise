@@ -65,6 +65,7 @@ module Staticise
     def self.scripts
       puts 'compiling coffees...'
       `coffee -o #{ File.join(APP_ROOT, 'public', 'js') } -c #{ File.join(APP_ROOT, 'app', 'js')}`
+      `coffee --join #{ File.join(APP_ROOT, 'public', 'js', 'app.js') } -c #{ File.join(APP_ROOT, 'app', 'js')}`
     end
 
     def self.styles
