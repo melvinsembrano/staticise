@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "staticise"
-  s.version = "0.5.7"
+  s.version = "0.5.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Melvin Sembrano"]
-  s.date = "2013-05-15"
+  s.date = "2013-05-16"
   s.description = "Static site generator using Haml and Coffescript"
   s.email = "melvinsembrano@gmail.com"
   s.executables = ["staticise"]
@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
     "public/css/test.css",
     "public/dog/index.html",
     "public/index.html",
+    "public/js/app.js",
     "public/js/main.js",
     "public/js/plugins/a.js",
     "public/lion/index.html",
