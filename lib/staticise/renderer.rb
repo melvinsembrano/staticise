@@ -10,18 +10,18 @@ module Staticise
     end
 
     def render_page
-      Haml::Engine.new(File.read(@layout)).render(self) do
-        Haml::Engine.new(File.read(@file)).render(self)
+      Haml::Engine.new(read_template(@layout)).render(self) do
+        Haml::Engine.new(read_template(@file)).render(self)
       end
     end
 
     def partial(file, locals = {})
       if file.split("/").length > 1
-        path = File.join(APP_ROOT, 'app', 'pages', "_#{ file.to_s }.haml")
+        path = File.join(APP_ROOT, 'app', 'pages', "_#{ file.to_s }")
       else
-        path = File.join(File.dirname(@file), "_#{ file.to_s }.haml")
+        path = File.join(File.dirname(@file), "_#{ file.to_s }")
       end
-      Haml::Engine.new(File.read(path)).render(self, locals)
+      Haml::Engine.new(read_template(path)).render(self, locals)
     end
 
     def export
@@ -56,7 +56,8 @@ module Staticise
     def self.pages
       puts "Compiling pages.."
       files = Dir.glob(File.join(APP_ROOT, 'app/pages/**/*.haml'))
-      files.each do |f|
+      files << Dir.glob(File.join(APP_ROOT, 'app/pages/**/*.html'))
+      files.flatten.each do |f|
         self.new(f).export unless File.basename(f).start_with?("_")
       end
       return
@@ -86,6 +87,18 @@ module Staticise
     end
 
     private
+
+    def read_template(file)
+      if File.extname(file).eql?(".html")
+        s = [":preserve\n"]
+        s << File.readlines(file).map {|l| "  #{ l }"}
+        res = s.flatten.join
+      else
+        res = File.read(file)
+      end
+      # puts res
+      res
+    end
 
     def extract(file)
       @layout = File.join(APP_ROOT, "app", "layouts", "app.haml")

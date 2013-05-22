@@ -32,4 +32,20 @@ command :init do |c|
   end
 end
 
+command :watch do |c|
+  c.syntax = 'staticise watch [options]'
+  c.summary = 'Start staticise watcher'
+  c.option '--no-sass', 'do not include sass files'
+  c.option '--no-less', 'do not include less files'
+  c.option '--no-haml', 'do not include haml files'
+  c.option '--no-coffee', 'do not include coffee files'
+
+  c.action do |args, options|
+    Staticise::Renderer.all
+
+    watcher = Staticise::Watcher.new(options)
+    watcher.start
+  end
+end
+
 
