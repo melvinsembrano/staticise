@@ -43,7 +43,7 @@ Then from your project root run:
     staticise init
     staticise watch
     
-And done, you can now start creating your static website.  Check the sample app here for more info https://github.com/melvinsembrano/staticise-sample
+And done, you can now start creating your static website using the power of dynamic libraries.  Check the sample app here for more info https://github.com/melvinsembrano/staticise-sample
 
 == Contributing to staticise
  
