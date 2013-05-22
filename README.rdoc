@@ -1,7 +1,46 @@
 = staticise
 
-Description goes here.
+A static site generator using HAML, SASS, Less, CoffeeScript
 
+== Prerequisites
+
+* Ruby 1.9++
+* NodeJS:
+
+   installer: http://nodejs.org/download/
+   
+* CoffeeScript:
+
+   npm install -g coffee-script
+
+* Less
+   
+   npm install -g less
+
+
+== Installation
+
+Create your working folder.
+
+  mkdir my-website
+  cd my-website
+
+Create a Gemfile:
+
+   touch Gemfile
+   
+Add the following into the Gemfile:
+
+  source 'https://rubygems.org'  
+  gem 'staticise'
+
+Then from your project's root run:
+
+    bundle install
+    staticise init
+    staticise watch
+    
+ 
 == Contributing to staticise
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
