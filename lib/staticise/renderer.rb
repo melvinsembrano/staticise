@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'yaml'
 
 module Staticise
 
@@ -90,7 +91,7 @@ module Staticise
 
     def read_template(file)
       if File.extname(file).eql?(".html")
-        s = [":preserve\n"]
+        s = [":erb\n"]
         s << File.readlines(file).map {|l| "  #{ l }"}
         res = s.flatten.join
       else
@@ -101,8 +102,21 @@ module Staticise
     end
 
     def extract(file)
-      @layout = File.join(APP_ROOT, "app", "layouts", "app.haml")
       @file = file
+      @layout = File.join(APP_ROOT, "app", "layouts", get_layout(file))
+    end
+
+    def get_layout(file)
+      config = File.join(File.dirname(file), "config.yml")
+      unless File.exist?(config)
+        config = File.join(APP_ROOT, "config.yml")
+        unless File.exist?(config)
+          config = File.join(LIB_ROOT, "config.yml")
+        end
+      end
+      data = YAML.load_file(config)
+
+      data["layout"] || "app.haml"
     end
 
   end
