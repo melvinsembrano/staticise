@@ -40,7 +40,8 @@ Then from your project's root run:
     staticise init
     staticise watch
     
- 
+And done, you can now start creating your static website.  Check the sample app here for more info https://github.com/melvinsembrano/staticise-sample
+
 == Contributing to staticise
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
