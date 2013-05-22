@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "staticise"
-  s.version = "0.5.9"
+  s.version = "0.5.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Melvin Sembrano"]
@@ -27,11 +27,12 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "app/css/st.sass",
-    "app/css/test.less",
+    "app/css/test-1.less",
     "app/css/test.sass",
     "app/js/main.coffee",
     "app/js/plugins/a.coffee",
     "app/layouts/app.haml",
+    "app/layouts/app.html",
     "app/pages/_footer.haml",
     "app/pages/_footer.html",
     "app/pages/cat/index.haml",
@@ -41,10 +42,12 @@ Gem::Specification.new do |s|
     "app/pages/lion/index.haml",
     "app/pages/t.haml",
     "bin/staticise",
+    "config.yml",
     "lib/staticise.rb",
     "lib/staticise/renderer.rb",
     "lib/staticise/watcher.rb",
     "public/cat/index.html",
+    "public/css/test-1.css",
     "public/css/test.css",
     "public/dog/index.html",
     "public/help.html",
@@ -61,7 +64,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/melvinsembrano/staticise"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.25"
+  s.rubygems_version = "1.8.10"
   s.summary = "Static site generator using Haml and Coffescript"
 
   if s.respond_to? :specification_version then
