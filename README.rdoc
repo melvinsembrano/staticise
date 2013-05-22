@@ -37,7 +37,7 @@ Add the following into the Gemfile:
   source 'https://rubygems.org'  
   gem 'staticise'
 
-Then from your project's root run:
+Then from your project root run:
 
     bundle install
     staticise init
