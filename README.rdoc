@@ -5,6 +5,9 @@ A static site generator using HAML, SASS, Less, CoffeeScript
 == Prerequisites
 
 * Ruby 1.9++
+
+   installer: http://www.ruby-lang.org/en/downloads/
+
 * NodeJS:
 
    installer: http://nodejs.org/download/
