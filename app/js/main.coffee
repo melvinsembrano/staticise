@@ -1,5 +1,5 @@
 myScript = 
   init: ->
-    alert('hello')
+    alert('hello world')
 
 myScript.init()

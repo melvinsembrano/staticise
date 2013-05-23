@@ -5,7 +5,12 @@ gem 'haml'
 gem 'sass'
 gem 'coffee-script'
 gem 'commander'
+
 gem 'listen'
+
+gem 'guard'
+gem 'guard-coffeescript'
+gem 'guard-sass'
 
 require 'rbconfig'
 gem 'wdm', '>= 0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw/i
