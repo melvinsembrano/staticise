@@ -41,10 +41,14 @@ command :watch do |c|
   c.option '--no-coffee', 'do not include coffee files'
 
   c.action do |args, options|
+    `guard start -w #{ APP_ROOT }`
+=begin
     Staticise::Renderer.all
 
     watcher = Staticise::Watcher.new(options)
     watcher.start
+=end
+
   end
 end
 

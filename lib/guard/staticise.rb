@@ -20,7 +20,7 @@ module Guard
 
       defaults = DEFAULT_OPTIONS.clone
 
-     watchers << ::Guard::Watcher.new(%r{^#{ defaults[:input] }/(.+\.h[ta]ml)$})
+      watchers << ::Guard::Watcher.new(%r{^#{ defaults[:input] }/(.+\.h[ta]ml)$})
 
       super(watchers, defaults.merge(options))
     end
