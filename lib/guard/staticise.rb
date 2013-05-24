@@ -39,7 +39,7 @@ module Guard
 
     def run_all
       begin
-        ::Staticise::Renderer.all
+        ::Staticise::Renderer.pages
       rescue Exception => e
         message = "Error compiling pages: #{ e.message }"
         ::Guard::UI.info(message)
@@ -54,7 +54,7 @@ module Guard
       begin
         paths.each do |f|
           if File.basename(f).start_with?("_") || f.index("layouts")
-            ::Staticise::Renderer.all
+            ::Staticise::Renderer.pages
           else
             ::Staticise::Renderer.new(f).export
           end
