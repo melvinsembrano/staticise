@@ -1,5 +1,6 @@
 require 'guard'
 require 'guard/cli'
+require 'guard/staticise'
 
 module Staticise
   class CLI < ::Guard::CLI
@@ -30,7 +31,13 @@ module Staticise
 
       return if options[:bare]
 
-      ::Guard::Guardfile.initialize_template("staticise")
+      File.open('Guardfile', 'wb') do |f|
+
+        f.puts("guard 'coffeescript', :input => 'app/js', :output => 'public/js'")
+        f.puts("guard 'sass', :input => 'app/css', :output => 'public/css'")
+        f.puts("guard 'staticise', :input => 'app', :output => 'public'")
+
+      end
 
 =begin
       if guard_names.empty?
