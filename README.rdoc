@@ -41,7 +41,7 @@ Then from your project root run:
 
     bundle install
     staticise init
-    staticise watch
+    staticise
     
 And done, you can now start creating your static website using the power of dynamic libraries.  Check the sample app here for more info https://github.com/melvinsembrano/staticise-sample
 

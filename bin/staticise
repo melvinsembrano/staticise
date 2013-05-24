@@ -1,55 +1,12 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
-require 'commander/import'
-
 $:.unshift File.join(File.dirname(__FILE__), *%w{ .. lib })
 require 'staticise'
 
+# require 'guard'
+# require 'guard/cli'
+# Guard::CLI.start
 
-program :name, 'staticise'
-program :version, '0.0.1'
-program :description, 'Static site generator using Haml and Coffeescript'
-
-default_command :build
-
-command :build do |c|
-  c.syntax = 'staticise build'
-  c.summary = 'Build all pages, js and css'
-  c.description = 'Build all pages, js and css'
-  c.example 'description', 'command example'
-  c.option '--some-switch', 'Some switch that does something'
-  c.action do |args, options|
-    Staticise::Renderer.all
-  end
-end
-
-command :init do |c|
-  c.syntax = 'staticise init'
-  c.summary = 'Initialize app, create initial folder structure'
-  c.action do |args, options|
-    Staticise::Renderer.init
-  end
-end
-
-command :watch do |c|
-  c.syntax = 'staticise watch [options]'
-  c.summary = 'Start staticise watcher'
-  c.option '--no-sass', 'do not include sass files'
-  c.option '--no-less', 'do not include less files'
-  c.option '--no-haml', 'do not include haml files'
-  c.option '--no-coffee', 'do not include coffee files'
-
-  c.action do |args, options|
-    `guard start -w #{ APP_ROOT }`
-=begin
-    Staticise::Renderer.all
-
-    watcher = Staticise::Watcher.new(options)
-    watcher.start
-=end
-
-  end
-end
-
+Staticise::CLI.start
 

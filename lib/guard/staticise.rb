@@ -10,7 +10,7 @@ module Guard
 
     DEFAULT_OPTIONS = {
       :output => 'public',
-      :input => 'app/pages',
+      :input => 'app',
       :all_on_start => true
     }
 
@@ -18,11 +18,11 @@ module Guard
       watchers = [] if !watchers
       ::Guard::UI.info("staticise watcher #{ watchers }")
 
-      defaults = DEFAULT_OPTIONS.clone
+      defaults = DEFAULT_OPTIONS.clone.merge(options)
 
       watchers << ::Guard::Watcher.new(%r{^#{ defaults[:input] }/(.+\.h[ta]ml)$})
 
-      super(watchers, defaults.merge(options))
+      super(watchers, defaults)
     end
 
     def start
@@ -50,9 +50,14 @@ module Guard
     end
 
     def run_on_changes(paths)
+      puts paths.join(", ")
       begin
         paths.each do |f|
-          ::Staticise::Renderer.new(f).export
+          if File.basename(f).start_with?("_") || f.index("layouts")
+            ::Staticise::Renderer.all
+          else
+            ::Staticise::Renderer.new(f).export
+          end
         end
       rescue Exception => e
         message = "Error compiling #{ paths.join(", ")}: #{ e.message }"
