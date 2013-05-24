@@ -25,6 +25,8 @@ module Staticise
     def init(*guard_names)
       puts "initializing..."
 
+      ::Staticise::Renderer.init
+
       verify_bundler_presence
 
       ::Guard::Guardfile.create_guardfile(:abort_on_existence => options[:bare])
@@ -35,6 +37,7 @@ module Staticise
 
         f.puts("guard 'coffeescript', :input => 'app/js', :output => 'public/js'")
         f.puts("guard 'sass', :input => 'app/css', :output => 'public/css'")
+        f.puts("guard 'less', :output => 'public/css'")
         f.puts("guard 'staticise', :input => 'app', :output => 'public'")
 
       end

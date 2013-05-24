@@ -46,35 +46,12 @@ module Staticise
       true
     end
 
-
-    def self.all
-      self.pages
-      self.scripts
-      self.styles
-      puts "DONE..."
-    end
-
     def self.pages
       puts "Compiling pages.."
       files = Dir.glob(File.join(APP_ROOT, 'app/pages/**/*.haml'))
       files << Dir.glob(File.join(APP_ROOT, 'app/pages/**/*.html'))
       files.flatten.each do |f|
         self.new(f).export unless File.basename(f).start_with?("_")
-      end
-      return
-    end
-
-    def self.scripts
-      puts 'compiling coffees...'
-      `coffee -o #{ File.join(APP_ROOT, 'public', 'js') } -c #{ File.join(APP_ROOT, 'app', 'js')}`
-      `coffee --join #{ File.join(APP_ROOT, 'public', 'js', 'app.js') } -c #{ File.join(APP_ROOT, 'app', 'js')}`
-    end
-
-    def self.styles
-      puts "Compiling pages.."
-      files = Dir.glob(File.join(APP_ROOT, 'app/css/**/*.less'))
-      files.each do |f|
-        self.compile_css(f)
       end
       return
     end
