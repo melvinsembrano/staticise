@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "staticise"
-  s.version = "0.6.0"
+  s.version = "0.6.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Melvin Sembrano"]
-  s.date = "2013-05-23"
+  s.date = "2013-05-24"
   s.description = "Static site generator using Haml and Coffescript"
   s.email = "melvinsembrano@gmail.com"
   s.executables = ["staticise"]
@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
     "lib/guard/staticise.rb",
     "lib/guard/staticise/notifier.rb",
     "lib/staticise.rb",
+    "lib/staticise/cli.rb",
     "lib/staticise/renderer.rb",
     "lib/staticise/watcher.rb",
     "public/cat/index.html",
