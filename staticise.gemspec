@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "staticise"
-  s.version = "0.6.2"
+  s.version = "0.6.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Melvin Sembrano"]
@@ -77,8 +77,6 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<haml>, [">= 0"])
       s.add_runtime_dependency(%q<sass>, [">= 0"])
       s.add_runtime_dependency(%q<coffee-script>, [">= 0"])
-      s.add_runtime_dependency(%q<commander>, [">= 0"])
-      s.add_runtime_dependency(%q<listen>, [">= 0"])
       s.add_runtime_dependency(%q<guard>, [">= 0"])
       s.add_runtime_dependency(%q<guard-coffeescript>, [">= 0"])
       s.add_runtime_dependency(%q<guard-sass>, [">= 0"])
@@ -91,8 +89,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<haml>, [">= 0"])
       s.add_dependency(%q<sass>, [">= 0"])
       s.add_dependency(%q<coffee-script>, [">= 0"])
-      s.add_dependency(%q<commander>, [">= 0"])
-      s.add_dependency(%q<listen>, [">= 0"])
       s.add_dependency(%q<guard>, [">= 0"])
       s.add_dependency(%q<guard-coffeescript>, [">= 0"])
       s.add_dependency(%q<guard-sass>, [">= 0"])
@@ -106,8 +102,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<haml>, [">= 0"])
     s.add_dependency(%q<sass>, [">= 0"])
     s.add_dependency(%q<coffee-script>, [">= 0"])
-    s.add_dependency(%q<commander>, [">= 0"])
-    s.add_dependency(%q<listen>, [">= 0"])
     s.add_dependency(%q<guard>, [">= 0"])
     s.add_dependency(%q<guard-coffeescript>, [">= 0"])
     s.add_dependency(%q<guard-sass>, [">= 0"])
