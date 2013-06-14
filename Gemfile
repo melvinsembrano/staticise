@@ -8,7 +8,6 @@ gem 'coffee-script'
 gem 'guard'
 gem 'guard-coffeescript'
 gem 'guard-sass'
-gem 'guard-less'
 
 require 'rbconfig'
 gem 'wdm', '>= 0.1.0' if RbConfig::CONFIG['target_os'] =~ /mswin|mingw/i
