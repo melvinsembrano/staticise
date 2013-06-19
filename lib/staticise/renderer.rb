@@ -84,7 +84,7 @@ module Staticise
     end
 
     def get_layout(file)
-      config = File.join(File.dirname(file), "config.yml")
+      config = File.join(File.dirname(file), "#{ File.basename(file, File.extname(file)) }.yml")
       unless File.exist?(config)
         config = File.join(APP_ROOT, "config.yml")
         unless File.exist?(config)
